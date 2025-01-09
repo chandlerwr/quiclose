@@ -23,7 +23,7 @@ namespace Quiclose {
             var ps = Process.GetProcessesByName(ProcessName);
 
             if (ps.Length == 0) {
-                Debug.WriteLine($"\n\n\nNo processed named {ProcessName} found");
+                Debug.WriteLine($"\n\n\nNo processes named {ProcessName} found");
                 _process = null;
                 return;
             }
@@ -40,9 +40,8 @@ namespace Quiclose {
 
         public void Close() {
             if (!HasProcess) throw new InvalidOperationException();
-
             _process?.Kill();
-
+            Poll();
         }
 
     }

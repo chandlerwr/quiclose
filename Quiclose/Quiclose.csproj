@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="shell32-090.png" />
+    <None Remove="shell32-131.png" />
+    <None Remove="shell32-296.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,8 @@
     <Resource Include="shell32-090.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="shell32-131.png" />
+    <Resource Include="shell32-296.png" />
   </ItemGroup>
 
 </Project>
