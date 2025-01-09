@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:Quiclose"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Quiclose"
+        Height="450"
+        Width="800"
+        WindowStyle="ToolWindow"
+        Icon="/Quiclose;component/shell32-090.png">
     <Grid>
-
+        <tb:TaskbarIcon
+            x:Name="_taskbar"
+            IconSource="/Quiclose;component/shell32-090.png"
+            TrayMouseDoubleClick="TrayDoubleClick"
+            ToolTipText="Quiclose">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Open" Click="TrayOpen"/>
+                    <MenuItem Header="Quit" Click="TrayQuit"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
     </Grid>
 </Window>
