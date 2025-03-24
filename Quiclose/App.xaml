@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Quiclose"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ImageSource x:Key="IconQuiclose">/Quiclose;component/shell32-090.png</ImageSource>
+        <ImageSource x:Key="IconCheckmark">/Quiclose;component/shell32-296.png</ImageSource>
+        <ImageSource x:Key="IconError">/Quiclose;component/shell32-131.png</ImageSource>
     </Application.Resources>
 </Application>
