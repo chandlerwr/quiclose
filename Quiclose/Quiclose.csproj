@@ -7,12 +7,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationIcon>ico177.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="shell32-090.png" />
     <None Remove="shell32-131.png" />
     <None Remove="shell32-296.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ico177.ico" />
   </ItemGroup>
 
   <ItemGroup>
