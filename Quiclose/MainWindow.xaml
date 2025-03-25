@@ -6,6 +6,7 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Quiclose"
+        xmlns:localization="clr-namespace:Quiclose.Localization"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:QuicloseVM, IsDesignTimeCreatable=False}"
         Title="Quiclose"
@@ -14,6 +15,13 @@
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
         Icon="{StaticResource IconQuiclose}">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Deactivated">
@@ -31,7 +39,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0">Application Name:</Label>
+        <Label Grid.Row="0" Margin="10,5,0,5" Content="{x:Static localization:Main.Main_AppName_Label}"/>
         <TextBox Grid.Row="1" MaxLines="1" Margin="10,0" Text="{Binding AppName}"/>
         <Grid Grid.Row="2" Height="50">
             <Grid.ColumnDefinitions>
@@ -39,6 +47,33 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Margin="10,10,5,10" Content="{x:Static localization:Main.Main_Keybind_Label}"/>
+
+                <ComboBox Grid.Column="1"
+                          Margin="0,10"
+                          SelectedValue="{Binding Keybind}"
+                          VerticalContentAlignment="Center"
+                          SelectedValuePath="Key"
+                          DisplayMemberPath="DisplayString">
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="{x:Type local:VKLocalizer}">
+                            <local:VKLocalizer Key="{x:Static local:VK.PAUSE}"/>
+                            <local:VKLocalizer Key="{x:Static local:VK.F11}"/>
+                            <local:VKLocalizer Key="{x:Static local:VK.DIVIDE}"/>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+
+            </Grid>
 
             <Image x:Name="_check" Grid.Column="1" Margin="0,10">
                 <Image.Visibility>
@@ -60,7 +95,11 @@
                     </Binding>
                 </Image.Source>
             </Image>
-            <Button Grid.Column="2" Content="Check for app" Margin="10" Padding="10,0" Command="{Binding CheckAppRunningCommand}"/>
+            <Button Grid.Column="2"
+                    Content="{x:Static localization:Main.Main_CheckRunning_Button}"
+                    Margin="10"
+                    Padding="10,0"
+                    Command="{Binding CheckAppRunningCommand}"/>
 
         </Grid>
 
